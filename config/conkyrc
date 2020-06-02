@@ -1,0 +1,90 @@
+background yes
+double_buffer yes
+no_buffers yes
+
+text_buffer_size 2048
+#imlib_cache_size 0
+update_interval 1
+cpu_avg_samples 1
+format_human_readable
+alignment top_left
+gap_x 5800 
+gap_y 450
+minimum_size 240 1080
+maximum_width 1024
+
+own_window yes
+own_window_type normal
+own_window_class Conky
+own_window_hints undecorated,below,sticky,skip_taskbar,skip_pager
+own_window_transparent no
+own_window_colour 000000
+own_window_argb_visual yes
+own_window_argb_value 0
+
+border_inner_margin 0
+border_outer_margin 0
+
+default_bar_size 100 6
+draw_shades no
+default_shade_color 000000
+draw_outline no
+default_outline_color 000000
+draw_borders no
+draw_graph_borders yes
+default_graph_size 40,220
+show_graph_scale no
+show_graph_range no
+
+override_utf8_locale yes
+use_xft yes
+xftfont Adele:size=13,weight:normal
+xftalpha 1
+uppercase no
+max_text_width 40
+
+default_color ffffff
+color1 ffba5a
+color2 ffffff
+
+TEXT
+${alignc}$sysname $kernel
+${alignc}$nodename
+${alignc}Uptime: $uptime
+${color1}${alignc}${scroll 25 ........................}
+
+${color2}${voffset 5}CPU1: ${cpu cpu1}%${exec sensors|grep 'Core 0'|awk '{print $3}'}%${goto 450}${voffset -10}${alignr 50}${color1}${cpugraph cpu1 40,220 66241C FF5A45}
+${color2}${voffset 5}CPU2: ${cpu cpu2}%${exec sensors|grep 'Core 1'|awk '{print $3}'}%${goto 450}${voffset -10}${alignr 50}${color1}${cpugraph cpu2 40,220 66241C FF5A45}
+${color2}${voffset 5}CPU3: ${cpu cpu3}%${exec sensors|grep 'Core 2'|awk '{print $3}'}%${goto 450}${voffset -10}${alignr 50}${color1}${cpugraph cpu3 40,220 66241C FF5A45}
+${color2}${voffset 5}CPU4: ${cpu cpu4}%${exec sensors|grep 'Core 3'|awk '{print $3}'}%${goto 450}${voffset -10}${alignr 50}${color1}${cpugraph cpu4 40,220 66241C FF5A45}
+${color2}${goto 90}${voffset 5}CPU5: ${cpu cpu5}%${offset 150}${color2}CPU6: ${cpu cpu6}%
+${color2}${goto 90}${voffset 5}CPU7: ${cpu cpu7}%${offset 150}${color2}CPU8: ${cpu cpu8}%
+
+# top processes
+${color2}${goto 10}${voffset 10}PROCESSES:
+${color1}${goto 10}${voffset -2}${top name 1}${alignr 10}${top cpu 1}%
+${color1}${goto 10}${voffset -2}${top name 2}${alignr 10}${top cpu 2}%
+${color1}${goto 10}${voffset -2}${top name 3}${alignr 10}${top cpu 3}%
+${color1}${goto 10}${voffset -2}${top name 4}${alignr 10}${top cpu 4}%
+${color1}${goto 10}${voffset -2}${top name 5}${alignr 10}${top cpu 5}%
+
+# top memory
+${color2}${goto 10}${voffset 10}MEMORY: ${alignr 25}${color1}$membar${alignr 10}${color1}$memperc%
+${goto 10}${voffset -2}${top_mem name 1}${alignr 10}${top mem 1}%
+${goto 10}${voffset -2}${top_mem name 2}${alignr 10}${top mem 2}%
+${goto 10}${voffset -2}${top_mem name 3}${alignr 10}${top mem 3}%
+${goto 10}${voffset -2}${top_mem name 4}${alignr 10}${top mem 4}%
+${goto 10}${color1}${voffset -2}${font}${top_mem name 5}${alignr 10}${top mem 5}%
+
+# disks
+${goto 10}${color2}DISKS ${alignr}${voffset -15}${color1}${diskiograph 33,183 66241C FF5A45}${color2}
+
+${goto 10}${color1}[/] Free: ${fs_free /}${alignr}Used: ${fs_used /}
+${goto 10}${color1}[/home] Free: ${fs_free /home}${alignr}Used: ${fs_used /home}
+
+# network
+${color2}Download: ${color0}${downspeedf wlp4s0} KiB/s ${alignr}${voffset -15}${color1}${downspeedgraph wlp4s0 40,220 66241C FF5A45}
+${color2}Upload: ${color0}${upspeedf wlp4s0} KiB/s ${alignr}${voffset -15}${color1}${upspeedgraph wlp4s0 40,220 66241C FF5A45} 
+${color2}Local: ${color0}${alignr}${exec ip addr show wlp4s0 | grep inet | awk '{print $2}' | head -1}
+${color2}Public: ${color0}${alignr}${execi 3600 wget -q -O /dev/stdout http://checkip.dyndns.org/ | cut -d : -f 2- | cut -d \< -f -1}
+
