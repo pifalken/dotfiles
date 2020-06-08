@@ -81,6 +81,11 @@ set wmh=0
 
 " SHIFT-ZQ -> exit without saving
 
+autocmd FileType python map <buffer> <F3> :w<CR>:exec '!python' shellescape(@%, 1)<CR>
+autocmd FileType python imap <buffer> <F3> <esc>:w<CR>:exec '!python' shellescape(@%, 1)<CR>
+"autocmd FileType python map <buffer> <F3> :w<CR>:ter python "%"<CR>
+"autocmd FileType python imap <buffer> <F3> <esc>:w<CR>:vert ter python "%"<CR>
+
 " ------------------------------
 function! StatusLine(current)
   return (a:current ? crystalline#mode() . '%#Crystalline#' : '%#CrystallineInactive#')
