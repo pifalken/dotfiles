@@ -1,0 +1,86 @@
+emacs-tips
+--------------------------------------
+new buffer/file -> C-x C-f
+change buffer -> C-x b
+list open buffers -> C-x C-b
+close current buffer -> C-x k
+split window (h) -> C-x 2
+split window (v) -> C-x 3
+cycle open panes -> C-x o
+close current pane -> C-x 0
+close other panes except current -> C-x 1
+
+save buffer -> C-x C-s
+
+search file -> C-s
+
+manual tab -> C-q TAB
+
+zoom in/zoom out -> C-x C + OR -
+default font size -> C-x C-0
+
+save-some-buffers, ! -> save all open buffers
+	save some buffers -> C-x s
+
+open buffer list & mark -> C-x C-b
+	mark for deletion -> (press `d`)
+	execute -> x
+
+python-mode
+--------------------------------------
+open python shell -> C-c C-z
+run content of python file in shell -> C-c C-c
+
+run shell command -> M-!
+compile -> M-x compile
+recompile -> M-x recompile
+
+org-mode
+--------------------------------------
+scheduling -> C-c C-s
+deadlines -> C-c C-d
+agenda -> C-c a a
+view all curent todo -> C-c a t
+asign tag -> C-c C-q
+fast status enable -> C-c C-t
+follow mode -> shift - f
+org-agenda-file-to-front -> C-c [
+forward week (in agenda view) -> f
+backward week (in agenda view) -> b
+
+enable checkbox -> C-u C-c C-c
+tick checkbox -> C-c C-c
+update checkboxes -> C-c #
+
+add tag -> C-c C-c
+add link -> C-c C-l
+	https://orgmode.org/manual/External-links.html
+
+follow link -> C-c C-o
+org-fill-paragraph -> linewrap paragraphs in org-mode
+
+preview latex image -> C-c C-x C-l
+
+sparse tree view of TODO -> C-c / t
+	- https://emacs.stackexchange.com/questions/13237/in-org-mode-how-to-view-todo-items-for-current-buffer-only
+
+babel mode {
+	#+BEGIN_SRC language
+	code here
+	#+END_SRC
+}
+	edit code -> C-c '
+	run code -> C-c C-c
+
+
+formating
+--------------------------------------
+
+### http://pragmaticemacs.com/emacs/org-mode-basics-iv-formatting-text-and-source-code/
+
+= = 	-> literal
+~ ~ 	-> code
+* * 	-> bold
+/ / 	-> italic
+_ _ 	-> underline
+#+QUOTE -> quote
