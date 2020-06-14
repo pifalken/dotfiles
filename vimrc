@@ -5,6 +5,8 @@ set ts=4
 set shiftwidth=4
 set noet
 "%retab!
+" set wrap is on by default
+" https://vim.fandom.com/wiki/Working_with_long_lines
 
 " compat etc...
 set t_Co=256
